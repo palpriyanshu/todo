@@ -1,5 +1,5 @@
 const express = require('express');
-const redis = require('redis');
+const { getRedisClient } = require('./redisClient');
 const { Client } = require('./dataProvider.js');
 
 const {
@@ -13,12 +13,7 @@ const {
 
 const app = express();
 
-const dsClient = redis.createClient({
-  url: 'redis://127.0.0.1:6379',
-  db: 1,
-});
-
-app.locals.client = new Client(dsClient);
+app.locals.client = new Client(getRedisClient());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
