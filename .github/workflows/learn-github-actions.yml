@@ -2,7 +2,7 @@ name: learn-github-actions
 on: [push]
 jobs:
   check-ls:
-    runs-on: mac-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
